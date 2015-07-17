@@ -1,0 +1,5 @@
+base setedit
+author Yvonne Lu
+email yvonnel@leapinglaptop.com
+name setedit Plugin
+desc Fix CKG editor preference persistent problem for documents across different namespaces
