@@ -2,6 +2,7 @@
 //that it will not overwrite the same cookie created in root path
 //
 //updated 8-8-15 added some debug messages
+//updateed 8-8-15 took out the debugging messages.  code is working
 
 function createCookie(name,value,days, cur_path) {
     //console.log("in create cookie "+name);
@@ -21,14 +22,14 @@ function readCookie(name) {
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        while (c.charAt(0)===' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
 }
 
 function eraseCookie(name, path) {
-    console.log("about to erase cookie "+name+" "+path);
+    //console.log("about to erase cookie "+name+" "+path);
     createCookie(name,"",-1, path);
 }
 
@@ -66,7 +67,7 @@ jQuery(function() {
         new_ns+="/";
       }
     }
-    console.log("new_ns="+new_ns);
+    //console.log("new_ns="+new_ns);
 
       
     var editor=readCookie("setedit");
