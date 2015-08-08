@@ -1,5 +1,7 @@
 //updated 8-2-15 to erase FCKG_USE cookie in specific namespace so
 //that it will not overwrite the same cookie created in root path
+//
+//updated 8-8-15 added some debug messages
 
 function createCookie(name,value,days, cur_path) {
     //console.log("in create cookie "+name);
@@ -26,6 +28,7 @@ function readCookie(name) {
 }
 
 function eraseCookie(name, path) {
+    console.log("about to erase cookie "+name+" "+path);
     createCookie(name,"",-1, path);
 }
 
@@ -63,18 +66,18 @@ jQuery(function() {
         new_ns+="/";
       }
     }
-    //console.log("new_ns="+new_ns);
+    console.log("new_ns="+new_ns);
 
       
     var editor=readCookie("setedit");
     //console.log("editor="+editor);
     
-    if (editor != null){
+    if (editor !== null){
       //erase cookie in the current name space
      
-      eraseCookie("FCKG_USE", "new_ns");
+      eraseCookie("FCKG_USE", new_ns);
       eraseCookie("FCKG_USE", "/");
-      if (editor=='DW') {
+      if (editor==='DW') {
         createCookie("FCKG_USE", "_false_", 0, "/");
       } 
 
@@ -91,7 +94,7 @@ jQuery(function() {
     { 
        var title = jQuery(this).attr("title");
        //alert(title);
-       if (title.trim().localeCompare('DW Edit')==0) {
+       if (title.trim().localeCompare('DW Edit')===0) {
         
         set_dw_edit();
        }
