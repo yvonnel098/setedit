@@ -94,15 +94,15 @@ jQuery(function() {
     jQuery('a').click(function (event) 
     { 
        var title = jQuery(this).attr("title");
-       //alert(title);
-       if (title.trim().localeCompare('DW Edit')===0) {
-        
-        set_dw_edit();
-       }
-     
+       if (typeof title !== "undefined") {
+          if (title.trim().localeCompare('DW Edit')===0) {
+          
+            set_dw_edit();
+          }
+          
+       } 
        
-      
-
+       
      });
 
     
